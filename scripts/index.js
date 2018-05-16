@@ -5,12 +5,14 @@ $(document).ready(function() {
   shoppingList.bindEventListeners();
   shoppingList.render();
   api.getItems((items) => {
-    const item = items[0];
-    console.log('current name: ' + item.name);
-    store.findAndUpdate(item.id, { name: 'foobar' });
-    console.log('new name: ' + item.name);
+    
 
     items.forEach((item) => store.addItem(item));
+    const item = items[0];
+    console.log('current name: ' + item.name);
+    console.log(item.id);
+    store.findAndUpdate(item.id, { name: 'bacon' });
+    console.log('new name: ' + item.name);
     shoppingList.render();
   });
 });
